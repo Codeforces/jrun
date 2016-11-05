@@ -75,16 +75,16 @@ public class ProcessRunnerTest extends TestCase {
         {
             File outputFile = File.createTempFile(ProcessRunnerTest.class.getName(), "output.txt");
             File errorFile = File.createTempFile(ProcessRunnerTest.class.getName(), "error.txt");
-            Outcome outcome = ProcessRunner.run(grayFile.getCanonicalPath() + " 0 26 27", new Params.Builder()
+            Outcome outcome = ProcessRunner.run(grayFile.getCanonicalPath() + " 0 25 26", new Params.Builder()
                     .setDirectory(grayFile.getParentFile())
                     .setRedirectOutputFile(outputFile)
                     .setRedirectErrorFile(errorFile)
                     .newInstance());
             assertTrue(outcome.getExitCode() == 0);
-            assertEquals(134217727, outputFile.length());
-            assertEquals(getGrayString(26), readFile(outputFile));
-            assertEquals(268435455, errorFile.length());
-            assertEquals(getGrayString(27), readFile(errorFile));
+            assertEquals(67108863, outputFile.length());
+            assertEquals(getGrayString(25), readFile(outputFile));
+            assertEquals(134217727, errorFile.length());
+            assertEquals(getGrayString(26), readFile(errorFile));
             outputFile.delete();
             errorFile.delete();
         }
