@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.codeforces.jrun</groupId>
+    <artifactId>jrun</artifactId>
+    <version>0.3.1</version>
+    <packaging>jar</packaging>
+
+    <name>jrun</name>
+    <url>http://code.google.com/p/jrun</url>
+    <inceptionYear>2010</inceptionYear>
+    <description>
+        Simple wrapper to execute a process from Java.
+    </description>
+    <developers>
+        <developer>
+            <id>MikeMirzayanov</id>
+            <name>Mike Mirzayanov</name>
+            <email>mirzayanovmr@gmail.com</email>
+            <roles>
+                <role>owner, author</role>
+            </roles>
+            <timezone>+3</timezone>
+            <properties/>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>Google Code</system>
+        <url>http://code.google.com/p/jrun/issues/list</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:svn:http://jrun.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://jrun.googlecode.com/svn/trunk</developerConnection>
+        <url>http://jrun.googlecode.com/svn/trunk/</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/test/files</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>
