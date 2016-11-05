@@ -28,7 +28,7 @@ public class ProcessRunnerTest extends TestCase {
                 new Params.Builder().setDirectory(new File(".")).newInstance());
 
         assertTrue(outcome.getExitCode() > 0);
-        assertTrue(outcome.getError().contains("timeout"));
+        assertTrue(outcome.getError().contains("99999"));
     }
 
     public void testOutputAndErrorRedirection() throws IOException {
@@ -56,7 +56,7 @@ public class ProcessRunnerTest extends TestCase {
             assertTrue(outcome.getExitCode() > 0);
             assertTrue(outcome.getError().isEmpty());
             assertTrue(tempFile.isFile());
-            assertTrue(readFile(tempFile).contains("timeout"));
+            assertTrue(readFile(tempFile).contains("99999"));
             tempFile.delete();
         }
     }
