@@ -17,9 +17,9 @@ public class ProcessRunnerTest extends TestCase {
         assertTrue(outcome.getExitCode() > 0);
 
         if (isWindows()) {
-            assertTrue(outcome.getOutput().trim().startsWith("Usage: ping "));
+            assertTrue(outcome.getOutput().contains("ping [-t] [-a]"));
         } else {
-            assertTrue(outcome.getError().trim().startsWith("Usage: ping "));
+            assertTrue(outcome.getError().contains("[-t ttl]"));
         }
     }
 
