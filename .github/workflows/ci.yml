@@ -24,6 +24,7 @@ jobs:
       - name: Test
         run: |
           mvn --batch-mode test
+        continue-on-error: ${{ matrix.os == 'macos-latest' }}
   deploy:
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'Codeforces'
     needs: test
