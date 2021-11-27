@@ -46,7 +46,8 @@ public class ProcessRunnerTest extends TestCase {
             assertTrue(outcome.getExitCode() == 0);
             assertTrue(outcome.getOutput().isEmpty());
             assertTrue(tempFile.isFile());
-            assertTrue(readFile(tempFile).equals("123\n"));
+            String fileContents = readFile(tempFile);
+            assertTrue(fileContents.equals("123\n") || fileContents.equals("123\r\n"));
             tempFile.delete();
         }
 
