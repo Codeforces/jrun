@@ -19,7 +19,7 @@ public class ProcessRunnerTest extends TestCase {
         if (isWindows()) {
             assertTrue(outcome.getOutput().contains("ping [-t] [-a]"));
         } else {
-            assertTrue(outcome.getError().contains("[-t ttl]"));
+            assertTrue(outcome.getError().contains("[-t ttl]") || outcome.getError().contains("Destination address required"));
         }
     }
 
@@ -28,7 +28,11 @@ public class ProcessRunnerTest extends TestCase {
                 new Params.Builder().setDirectory(new File(".")).newInstance());
 
         assertTrue(outcome.getExitCode() > 0);
-        assertTrue(outcome.getError().contains("99999"));
+        if (isWindows()) {
+            assertTrue(outcome.getError().contains("Valid range is -1 to 99999"));
+        } else {
+            assertTrue(outcome.getError().contains("Try 'timeout --help' for more information"));
+        }
     }
 
     public void testOutputAndErrorRedirection() throws IOException {
@@ -56,7 +60,11 @@ public class ProcessRunnerTest extends TestCase {
             assertTrue(outcome.getExitCode() > 0);
             assertTrue(outcome.getError().isEmpty());
             assertTrue(tempFile.isFile());
-            assertTrue(readFile(tempFile).contains("99999"));
+            if (isWindows()) {
+                assertTrue(readFile(tempFile).contains("Valid range is -1 to 99999"));
+            } else {
+                assertTrue(readFile(tempFile).contains("Try 'timeout --help' for more information"));
+            }
             tempFile.delete();
         }
     }
